@@ -1,6 +1,6 @@
 # `@natoboram/bookmarklets`
 
-[![Node.js CI](https://github.com/NatoBoram/bookmarklets/actions/workflows/node.js.yaml/badge.svg)](https://github.com/NatoBoram/bookmarklets/actions/workflows/node.js.yaml) [![Docker CI](https://github.com/NatoBoram/bookmarklets/actions/workflows/docker.yaml/badge.svg)](https://github.com/NatoBoram/bookmarklets/actions/workflows/docker.yaml) [![CodeQL](https://github.com/NatoBoram/bookmarklets/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/NatoBoram/bookmarklets/actions/workflows/github-code-scanning/codeql) [![Dependabot Updates](https://github.com/NatoBoram/bookmarklets/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/NatoBoram/bookmarklets/actions/workflows/dependabot/dependabot-updates)
+[![Node.js CI](https://github.com/NatoBoram/bookmarklets/actions/workflows/node.js.yaml/badge.svg)](https://github.com/NatoBoram/bookmarklets/actions/workflows/node.js.yaml) [![CodeQL](https://github.com/NatoBoram/bookmarklets/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/NatoBoram/bookmarklets/actions/workflows/github-code-scanning/codeql) [![Dependabot Updates](https://github.com/NatoBoram/bookmarklets/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/NatoBoram/bookmarklets/actions/workflows/dependabot/dependabot-updates)
 
 My personal collection of bookmarklets.
 
