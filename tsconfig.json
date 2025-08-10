@@ -6,7 +6,7 @@
 
 		/* Language and Environment */
 		"target": "ESNext",
-		"lib": ["DOM", "ESNext"],
+		"lib": ["DOM", "ESNext", "DOM.Iterable"],
 		"useDefineForClassFields": true,
 		"moduleDetection": "force",
 
@@ -21,6 +21,7 @@
 		"resolveJsonModule": true,
 
 		/* JavaScript Support */
+		"allowJs": true,
 
 		/* Emit */
 		"declaration": true,
@@ -31,7 +32,6 @@
 		/* Interop Constraints */
 		"isolatedModules": true,
 		"verbatimModuleSyntax": true,
-		"isolatedDeclarations": true,
 		"erasableSyntaxOnly": true,
 		"forceConsistentCasingInFileNames": true,
 
