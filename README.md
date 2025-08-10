@@ -1,4 +1,4 @@
-# `@natoboram/bookmarklets`
+# Bookmarklets
 
 [![Node.js CI](https://github.com/NatoBoram/bookmarklets/actions/workflows/node.js.yaml/badge.svg)](https://github.com/NatoBoram/bookmarklets/actions/workflows/node.js.yaml) [![CodeQL](https://github.com/NatoBoram/bookmarklets/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/NatoBoram/bookmarklets/actions/workflows/github-code-scanning/codeql) [![Dependabot Updates](https://github.com/NatoBoram/bookmarklets/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/NatoBoram/bookmarklets/actions/workflows/dependabot/dependabot-updates)
 
