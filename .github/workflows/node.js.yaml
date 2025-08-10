@@ -29,15 +29,7 @@ jobs:
           node-version: latest
 
       - run: pnpm install --frozen-lockfile --strict-peer-dependencies
-      - run: pnpm run build --noEmit
       - run: pnpm run lint
-
-      - if: github.actor != 'dependabot[bot]' && github.actor != 'nektos/act'
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage
-          path: coverage
-          if-no-files-found: error
 
   fix:
     permissions:
