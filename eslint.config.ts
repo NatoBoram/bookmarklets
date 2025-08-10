@@ -1,12 +1,12 @@
-import { default as eslint } from "@eslint/js"
-import { default as prettier } from "eslint-config-prettier"
-import { browser, node } from "globals"
-import { default as tseslint } from "typescript-eslint"
+import { default as eslint } from "@eslint/js";
+import { default as prettier } from "eslint-config-prettier";
+import { browser } from "globals";
+import { default as tseslint } from "typescript-eslint";
 
 export default tseslint.config(
 	{
 		languageOptions: {
-			globals: { ...browser, ...node },
+			globals: { ...browser },
 			parserOptions: { project: "./tsconfig.eslint.json" },
 		},
 	},
@@ -89,4 +89,4 @@ export default tseslint.config(
 			"pnpm-lock.yaml",
 		],
 	},
-)
+);

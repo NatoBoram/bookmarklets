@@ -35,5 +35,5 @@ This release doesn't actually exist; it's a placeholder to demonstrate the chang
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities.
 
-[Unreleased]: https://github.com/NatoBoram/gigachad.ts/compare/v0.0.0...HEAD
-[0.0.0]: https://github.com/NatoBoram/gigachad.ts/releases/tag/v0.0.0
+[Unreleased]: https://github.com/NatoBoram/bookmarklets/compare/v0.0.0...HEAD
+[0.0.0]: https://github.com/NatoBoram/bookmarklets/releases/tag/v0.0.0
