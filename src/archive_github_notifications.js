@@ -22,9 +22,12 @@
 			);
 			const skip = notification.querySelector(".octicon-skip");
 			const stop = notification.querySelector(".octicon-stop");
+			const tag = notification.querySelector(".octicon-tag");
 			const x = notification.querySelector(".octicon-x");
 
-			return merged || prClosed || x || skip || issueClosed || check || stop;
+			return (
+				check || issueClosed || merged || prClosed || skip || stop || tag || x
+			);
 		});
 
 		/** @type (HTMLInputElement | null)[] */
