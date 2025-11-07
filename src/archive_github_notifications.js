@@ -1,17 +1,18 @@
 (async () => {
 	"use strict";
 
-	async function archiveNotifications() {
-		/** @type NodeListOf<HTMLLIElement> */
-		const notifications = document.querySelectorAll(
-			"li.notifications-list-item",
-		);
+	const uiTimeout = 1000;
+	const pageTimeout = 3000;
 
-		/**
-		 * Closed, merged and CI notifications
-		 * @type IteratorObject<HTMLLIElement, undefined, unknown>
-		 */
-		const filtered = notifications.values().filter(notification => {
+	/**
+	 * Gets the checkboxes for the notifications to archive.
+	 * @returns {HTMLInputElement[]}
+	 */
+	function queryNotificationCheckboxes() {
+		/** @type NodeListOf<HTMLLIElement> */
+		const all = document.querySelectorAll("li.notifications-list-item");
+
+		const notifications = all.values().filter(notification => {
 			const check = notification.querySelector(
 				".octicon-check.color-fg-success",
 			);
@@ -30,17 +31,17 @@
 			);
 		});
 
-		/** @type (HTMLInputElement | null)[] */
-		const checkboxes = filtered
+		return notifications
 			.map(notification => notification.querySelector('input[type="checkbox"]'))
+			.filter(Boolean)
 			.toArray();
+	}
 
-		/* Click them */
+	async function archiveNotifications() {
+		const checkboxes = queryNotificationCheckboxes();
 		for (const checkbox of checkboxes) checkbox?.click();
-
 		console.log(`Clicked on ${checkboxes.length} checkboxes.`);
-
-		await new Promise(resolve => setTimeout(resolve, 1000));
+		await new Promise(resolve => setTimeout(resolve, uiTimeout));
 
 		if (checkboxes.length) {
 			/** @type HTMLFormElement[] */
@@ -51,19 +52,23 @@
 				.toArray();
 
 			for (const form of done) form.requestSubmit();
-			console.log("Archived notifications.");
+			console.log(`Archived ${checkboxes.length} notifications.`);
 		}
 
 		return checkboxes.length;
 	}
 
+	console.log("Archiving all notifications...");
 	for (
-		let archived = await archiveNotifications();
-		archived >= 10;
-		archived = await archiveNotifications()
+		let prev = document.querySelector('a.btn[aria-label="Previous"]');
+		(prev = document.querySelector('a.btn[aria-label="Previous"]')), prev;
+		prev.click()
 	) {
-		await new Promise(resolve => setTimeout(resolve, 3000));
+		await new Promise(resolve => setTimeout(resolve, pageTimeout));
+		await archiveNotifications();
+		await new Promise(resolve => setTimeout(resolve, pageTimeout));
+		console.log("Navigating to the previous page...");
 	}
 
-	console.info("Under 10 notifications left in this page.");
+	console.info("Done!");
 })();
