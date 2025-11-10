@@ -59,16 +59,21 @@
 	}
 
 	console.log("Archiving all notifications...");
-	for (
-		let prev = document.querySelector('a.btn[aria-label="Previous"]');
-		(prev = document.querySelector('a.btn[aria-label="Previous"]')), prev;
-		prev.click()
-	) {
-		await new Promise(resolve => setTimeout(resolve, pageTimeout));
+
+	/** @type HTMLAnchorElement | null */
+	let prev = document.querySelector('a.btn[aria-label="Previous"]');
+	do {
 		await archiveNotifications();
 		await new Promise(resolve => setTimeout(resolve, pageTimeout));
-		console.log("Navigating to the previous page...");
-	}
+
+		if (prev) {
+			console.log("Navigating to the previous page...");
+			prev.click();
+
+			await new Promise(resolve => setTimeout(resolve, pageTimeout));
+			prev = document.querySelector('a.btn[aria-label="Previous"]');
+		}
+	} while (prev);
 
 	console.info("Done!");
 })();
