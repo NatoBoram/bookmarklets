@@ -60,20 +60,20 @@
 
 	console.log("Archiving all notifications...");
 
-	/** @type HTMLAnchorElement | null */
-	let prev = document.querySelector('a.btn[aria-label="Previous"]');
-	do {
+	for (
+		let prev = document.querySelector('.btn[aria-label="Previous"]');
+		prev;
+		prev = document.querySelector('a.btn[aria-label="Previous"]')
+	) {
 		await archiveNotifications();
 		await new Promise(resolve => setTimeout(resolve, pageTimeout));
 
-		if (prev) {
+		if (prev?.href) {
 			console.log("Navigating to the previous page...");
 			prev.click();
-
 			await new Promise(resolve => setTimeout(resolve, pageTimeout));
-			prev = document.querySelector('a.btn[aria-label="Previous"]');
 		}
-	} while (prev);
+	}
 
 	console.info("Done!");
 })();
