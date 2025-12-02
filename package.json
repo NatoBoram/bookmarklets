@@ -32,8 +32,8 @@
 		"lint:fix": "eslint --fix --quiet .; markdownlint-cli2 \"**/*.md\" --fix; prettier --list-different --write ."
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.39.0",
-		"eslint": "^9.39.0",
+		"@eslint/js": "^9.39.1",
+		"eslint": "^9.39.1",
 		"eslint-config-prettier": "^10.1.8",
 		"globals": "^16.5.0",
 		"jiti": "^2.6.1",
