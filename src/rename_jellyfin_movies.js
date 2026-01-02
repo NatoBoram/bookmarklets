@@ -5,7 +5,7 @@
 		if (!btnCancel)
 			throw new Error("Cancel button not found", { cause: btnCancel });
 		btnCancel.click();
-		await new Promise(r => setTimeout(r, 2000));
+		await new Promise(r => setTimeout(r, 1000));
 	}
 
 	async function save() {
@@ -13,7 +13,7 @@
 		const btnSave = document.querySelector(".btnSave");
 		if (!btnSave) throw new Error("Save button not found", { cause: btnSave });
 		btnSave.click();
-		await new Promise(r => setTimeout(r, 4000));
+		await new Promise(r => setTimeout(r, 1000));
 	}
 
 	const movies = Array.from(
@@ -30,7 +30,7 @@
 		);
 		if (!movie) throw new Error("Movie not found", { cause: { movie, index } });
 
-		console.log("Opening the context menu of a movie", movie);
+		console.log("Opening the context menu");
 		movie.dispatchEvent(new MouseEvent("contextmenu", { bubbles: true }));
 		await new Promise(r => setTimeout(r, 1000));
 
@@ -58,34 +58,49 @@
 		const txtName = document.getElementById("txtName");
 		if (!txtName) throw new Error("Title input not found", { cause: txtName });
 
-		// Extract languages from txtPath. The value looks like
+		// Extract movie name from txtPath. The value looks like
 		// "/syncthing/Inoxydable Films/10 Things I Hate About You - VOA_VFQ_VFF.mkv"
-		// and I need "VOA_VFQ_VFF".
-		const splitDash = txtPath.value.split(" - ");
-		const afterDash = splitDash[splitDash.length - 1];
-		const [beforeDot] = afterDash.split(".");
-		const languages = beforeDot.replaceAll("_", ", ");
+		// and I need "10 Things I Hate About You - VOA, VFQ, VFF".
+		const splitSlash = txtPath.value.split("/");
 
-		if (txtName.value.endsWith(languages)) {
+		/** @example "10 Things I Hate About You - VOA_VFQ_VFF.mkv" */
+		const afterSlash = splitSlash[splitSlash.length - 1];
+		const byDots = afterSlash.split(".");
+
+		/** @example "10 Things I Hate About You - VOA_VFQ_VFF" */
+		const beforeDot = byDots.slice(0, byDots.length - 1).join(".");
+		const splitDash = beforeDot.split(" - ");
+
+		/** @example "VOA_VFQ_VFF" */
+		const afterDash = splitDash[splitDash.length - 1];
+
+		/** @example "VOA, VFQ, VFF" */
+		const languages = afterDash.replaceAll("_", ", ");
+
+		/** @example "10 Things I Hate About You - VOA, VFQ, VFF" */
+		const movieName = beforeDot.replace(afterDash, languages);
+
+		if (txtName.value == movieName) {
 			console.warn(`Skipping "${txtName.value}"`);
-			cancel();
+			await cancel();
 			continue;
 		}
 
-		txtName.value = `${txtName.value} - ${languages}`;
+		console.info(`Renaming "${txtName.value}" to "${movieName}"...`);
+		txtName.value = movieName;
 
 		/** @type {HTMLInputElement | null} */
 		const enabledName = document.querySelector('input[data-value="Name"]');
 
-		if (enabledName.value === "on") {
+		if (enabledName.checked) {
 			console.log("Disabling Enabled Name");
 			enabledName.click();
 			await new Promise(r => setTimeout(r, 1000));
 		} else {
-			console.warn("Enabled Name is already disabled", enabledName);
+			console.warn("Enabled Name is already disabled");
 		}
 
-		save();
+		await save();
 	}
 
 	console.log("All movies renamed.");
