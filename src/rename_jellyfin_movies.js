@@ -59,15 +59,15 @@
 		if (!txtName) throw new Error("Title input not found", { cause: txtName });
 
 		// Extract movie name from txtPath. The value looks like
-		// "/syncthing/Inoxydable Films/10 Things I Hate About You - VOA_VFQ_VFF.mkv"
-		// and I need "10 Things I Hate About You - VOA, VFQ, VFF".
+		// "/syncthing/Films/Movie Name - VOA_VFQ_VFF.mkv"
+		// and I need "Movie Name - VOA, VFQ, VFF".
 		const splitSlash = txtPath.value.split("/");
 
-		/** @example "10 Things I Hate About You - VOA_VFQ_VFF.mkv" */
+		/** @example "Movie Name - VOA_VFQ_VFF.mkv" */
 		const afterSlash = splitSlash[splitSlash.length - 1];
 		const byDots = afterSlash.split(".");
 
-		/** @example "10 Things I Hate About You - VOA_VFQ_VFF" */
+		/** @example "Movie Name - VOA_VFQ_VFF" */
 		const beforeDot = byDots.slice(0, byDots.length - 1).join(".");
 		const splitDash = beforeDot.split(" - ");
 
@@ -77,7 +77,7 @@
 		/** @example "VOA, VFQ, VFF" */
 		const languages = afterDash.replaceAll("_", ", ");
 
-		/** @example "10 Things I Hate About You - VOA, VFQ, VFF" */
+		/** @example "Movie Name - VOA, VFQ, VFF" */
 		const movieName = beforeDot.replace(afterDash, languages);
 
 		if (txtName.value == movieName) {
