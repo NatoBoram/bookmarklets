@@ -1,4 +1,6 @@
 (async () => {
+	"use strict";
+
 	async function cancel() {
 		console.log("Cancelling...");
 		const btnCancel = document.querySelector(".btnCancel");
