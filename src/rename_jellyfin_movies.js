@@ -60,9 +60,9 @@
 		const txtName = document.getElementById("txtName");
 		if (!txtName) throw new Error("Title input not found", { cause: txtName });
 
-		// Extract movie name from txtPath. The value looks like
-		// "/syncthing/Films/Movie Name - VOA_VFQ_VFF.mkv"
-		// and I need "Movie Name - VOA, VFQ, VFF".
+		/* Extract movie name from txtPath. The value looks like
+		"/syncthing/Films/Movie Name - VOA_VFQ_VFF.mkv" and I need
+		"Movie Name - VOA, VFQ, VFF". */
 		const splitSlash = txtPath.value.split("/");
 
 		/** @example "Movie Name - VOA_VFQ_VFF.mkv" */
