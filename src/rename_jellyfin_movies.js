@@ -18,11 +18,10 @@
 		await new Promise(r => setTimeout(r, 1000));
 	}
 
-	const movies = Array.from(
-		document.querySelectorAll(
-			".card.portraitCard.card-hoverable.card-withuserdata",
-		),
-	);
+	const movies = document
+		.querySelectorAll(".card.portraitCard.card-hoverable.card-withuserdata")
+		.values()
+		.toArray();
 
 	for (let index = 0; index < movies.length; index++) {
 		console.log(`Renaming movie ${index}/${movies.length}...`);
@@ -36,13 +35,11 @@
 		movie.dispatchEvent(new MouseEvent("contextmenu", { bubbles: true }));
 		await new Promise(r => setTimeout(r, 1000));
 
-		const buttons = document.querySelectorAll(
-			".listItemBodyText.actionSheetItemText",
-		);
-
-		const editMetadata = Array.from(buttons).find(
-			b => b.innerText === "Edit metadata",
-		);
+		const editMetadata = document
+			.querySelectorAll(".listItemBodyText.actionSheetItemText")
+			.values()
+			.toArray()
+			.find(b => b.innerText === "Edit metadata");
 
 		if (!editMetadata)
 			throw new Error("Edit metadata button not found", {
