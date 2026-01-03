@@ -93,6 +93,10 @@
 
 		/** @type {HTMLInputElement | null} */
 		const enabledName = document.querySelector('input[data-value="Name"]');
+		if (!enabledName)
+			throw new Error("Enabled Name checkbox not found", {
+				cause: enabledName,
+			});
 
 		if (enabledName.checked) {
 			console.log("Disabling Enabled Name");
