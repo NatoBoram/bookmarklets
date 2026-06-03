@@ -35,12 +35,12 @@
 		"@eslint/js": "^9.39.2",
 		"eslint": "^9.39.2",
 		"eslint-config-prettier": "^10.1.8",
-		"globals": "^17.3.0",
-		"jiti": "^2.6.1",
-		"markdownlint-cli2": "^0.21.0",
+		"globals": "^17.6.0",
+		"jiti": "^2.7.0",
+		"markdownlint-cli2": "^0.22.1",
 		"prettier": "^3.8.1",
 		"typescript": "5.9.3",
-		"typescript-eslint": "^8.56.1"
+		"typescript-eslint": "^8.60.1"
 	},
 	"private": true,
 	"type": "module"
