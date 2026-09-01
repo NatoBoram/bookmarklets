@@ -33,14 +33,14 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
-		"eslint": "^10.8.0",
+		"eslint": "^10.9.1",
 		"eslint-config-prettier": "^10.1.8",
-		"globals": "^17.8.0",
+		"globals": "^17.11.0",
 		"jiti": "^2.7.0",
 		"markdownlint-cli2": "^0.23.2",
 		"prettier": "^3.9.6",
 		"typescript": "6.0.3",
-		"typescript-eslint": "^8.65.0"
+		"typescript-eslint": "^8.68.0"
 	},
 	"private": true,
 	"type": "module"
