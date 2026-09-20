@@ -23,10 +23,11 @@
 		if (!tab) return "";
 
 		return tab
-			.querySelectorAll("p")
+			.querySelectorAll("p, .ewa-rteLine")
 			.values()
-			.map(p =>
-				p.textContent
+			.map(element =>
+				element.textContent
+					.replaceAll("\u00A0", " ")
 					.replaceAll("’", "'")
 					.replaceAll("“", '"')
 					.replaceAll("”", '"'),
