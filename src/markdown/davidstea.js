@@ -85,8 +85,21 @@
 					);
 				}
 
+				if (/^cold-in-\d+ml$/i.test(label)) {
+					const ml = label.match(/^cold-in-(\d+)ml$/i)[1];
+					const oz = Math.round(ml * (16_000_000 / 473_176_473));
+					return label.replace(
+						/^cold-in-(\d+ml)$/i,
+						`Cold water in $1 (${oz} oz)`,
+					);
+				}
+
 				if (/^(\d+)-plus-min$/i.test(label)) {
 					return label.replace(/^(\d+)-plus-min$/i, "$1+ minutes");
+				}
+
+				if (/^more-(\d+)-min$/i.test(label)) {
+					return label.replace(/^more-(\d+)-min$/i, "$1+ minutes");
 				}
 
 				if (/^(\d+)-(\d+)-min$/i.test(label)) {
