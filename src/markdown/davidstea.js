@@ -64,7 +64,10 @@
 			.values()
 			.map(image => {
 				const filename = image.src.split("/").pop();
-				const label = filename.split("?")[0].replace(/-EN\.svg$/i, "");
+				const label = filename
+					.split("?")[0]
+					.replace(/-eng?(-\d+)?\.svg$/i, "")
+					.replaceAll("_", "-");
 
 				if (/^(\d+-\d+)-perfect-spoons$/i.test(label)) {
 					return label.replace(/^(.+)-perfect-spoons$/i, "$1 perfect spoons");
