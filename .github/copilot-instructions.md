@@ -1,24 +1,18 @@
-# Copilot Instructions
+# Copilot instructions
 
-This is a collection of browser bookmarklets - small JavaScript snippets that run in the browser's bookmark bar. Bookmarklets are standalone IIFE functions that execute in the context of the current web page.
+This repository contains standalone browser bookmarklets. Each file in `src/` is copied into a browser bookmark and runs in the active page; there is no application bundle or runtime package.
 
-## Code Structure
+## Repository layout
 
-- #file:../src : Contains all bookmarklet JavaScript files
-  - Flat files are standalone bookmarklets
-  - Subdirectories group related bookmarklets by function
+- `src/*.js` contains independent bookmarklets.
+- `src/window_open/*.js` contains related viewport-sized window helpers.
+- `README.md` lists user-facing bookmarklets and explains installation in a browser.
+- `.github/instructions/javascript.instructions.md` contains the detailed JavaScript conventions.
 
-## Development Workflow
+Preserve the existing file grouping when adding a bookmarklet and add a link in `README.md` when it is user-facing.
 
-- **Install**: `pnpm install`
-- **Format**: `pnpm run format` (runs Prettier write)
-- **Fix**: `pnpm run lint:fix` (auto-fixes linting and formatting issues)
-- **Lint**: `pnpm run lint` (runs ESLint, markdownlint-cli2, and Prettier checks)
+## Development workflow
 
-CI automatically commits fixes on failures (lockfile, format, lint) unless triggered by merge queue.
+Install dependencies with `pnpm install`. Use `pnpm run lint:fix` for automatic fixes. Do not use `pnpm run lint` as it is for CI only.
 
-## Dependencies
-
-No runtime dependencies - bookmarklets run in browser context only.
-
-Dev dependencies: ESLint, Prettier, TypeScript (for type checking), markdownlint-cli2.
+There is no test suite or build step.

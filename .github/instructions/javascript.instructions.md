@@ -1,5 +1,5 @@
 ---
-applyTo: **/*.js
+applyTo: "**/*.js"
 ---
 
 # JavaScript Instructions
@@ -41,6 +41,9 @@ Async flow:
 ## Runtime Context
 
 - Code runs in the active page; do not import modules or depend on bundling.
+- Keep each bookmarklet self-contained and keep browser side effects inside the IIFE so no globals leak into the page.
+- Do not add shared runtime modules or other code that requires an application bundle.
+- Manually consider the target site's DOM, permissions and browser APIs because bookmarklets execute in a page-specific runtime.
 - Assume modern DOM APIs (`querySelectorAll`, `requestSubmit`, `checkVisibility`).
 - Avoid external network calls unless essential; bookmarklets should be instant.
 
@@ -65,7 +68,7 @@ const checkboxes = filtered.map(n => n.querySelector('input[type="checkbox"]')).
 
 ## Performance & Safety
 
-- Avoid infinite loops; cap retries (see `for (let archived = await fn(); archived >= 10; ...)`).
+- Avoid infinite loops; cap retries and page traversal.
 - Gate optional actions with existence checks (`checkbox?.click()`).
 
 ## Adding a New Bookmarklet
