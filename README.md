@@ -12,6 +12,9 @@ My personal collection of bookmarklets.
   - [640p](./src/window_open/640p.js)
   - [Feature graphic (1024x500)](./src/window_open/feature_graphic.js)
 - [Archive GitHub notifications](./src/archive_github_notifications.js)
+- Copy as Markdown:
+  - [Camellia Sinensis](./src/markdown/camellia_sinensis.js)
+  - [DAVIDsTEA](./src/markdown/davidstea.js)
 
 ## Usage
 
